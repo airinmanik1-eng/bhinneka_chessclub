@@ -1,0 +1,15 @@
+{
+  "name": "st-bhinneka-chess-club-astro",
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@astrojs/vue": "^5.1.1",
+    "astro": "^5.13.2",
+    "vue": "^3.5.18"
+  }
+}

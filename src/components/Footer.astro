@@ -1,0 +1,29 @@
+---
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="brand">
+    <img src="/logo.jpg" alt="" />
+    <span>ST BHINNEKA<small>CHESS CLUB</small></span>
+  </div>
+  <p>Satu papan, Satu strategi, Jadilah bagian dari Permainan</p>
+ <div class="motto">Gens Una Sumus<small>Kita adalah satu keluarga</small></div>
+  <div class="footer-bottom">
+    <span>© {year} ST Bhinneka Chess Club</span>
+    <span>Unit Prestasi Mahasiswa · Satya Terra Bhinneka</span>
+  </div>
+</footer>
+
+<a id="to-top" class="to-top" href="#beranda" aria-label="Kembali ke atas" title="Kembali ke atas">
+  <svg viewBox="45 0 422 512" width="16" height="19" fill="currentColor" aria-hidden="true">
+    <path d="M45 153 L255 0 L467 153 V297 L255 143 L45 297 Z" />
+    <path d="M45 368 L255 214 L467 368 V512 L255 358 L45 512 Z" />
+  </svg>
+</a>
+
+<script>
+  const btn = document.getElementById('to-top');
+  const toggle = () => btn?.classList.toggle('show', window.scrollY > 400);
+  window.addEventListener('scroll', toggle, { passive: true });
+  toggle();
+</script>

@@ -1,0 +1,51 @@
+---
+// Papan catur 8x8: kuda di e4, jejak langkah emas dari b1 → c3, dan pilihan langkah berikutnya.
+const files = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
+const piece: Record<string, string> = { e4: 'knight', d6: 'pawn' };
+const trail = new Set(['b1', 'c3']);
+const options = new Set(['d6', 'f6', 'c5', 'g5']);
+const squares = [];
+for (let rank = 8; rank >= 1; rank--) {
+  files.forEach((f, i) => {
+    const id = `${f}${rank}`;
+    const coord = rank === 1 && f === 'a' ? 'a1' : rank === 1 ? f : f === 'a' ? String(rank) : '';
+    squares.push({ id, coord, dark: (i + rank) % 2 === 1, kind: piece[id], path: trail.has(id), target: options.has(id) });
+  });
+}
+---
+<section id="beranda" class="hero">
+  <div class="hero-copy">
+    <div class="eyebrow">SATU PAPAN. BANYAK KEMUNGKINAN.</div>
+    <h1>Berpikir taktis.<br />Melangkah berani.<br /><em>Bertumbuh bersama.</em></h1>
+    <p>Rumah bagi mahasiswa yang ingin mengasah strategi, membangun persahabatan, dan menumbuhkan semangat berprestasi melalui catur.</p>
+    <div class="actions">
+      <a class="link" href="#tentang">Kenali klub kami <span>↓</span></a>
+    </div>
+    <div class="hero-note">
+      <span class="glyph">♞</span>
+      <span>Dari langkah pertama hingga langkah terbaik.<br /><b>Pemula maupun berpengalaman, semua punya tempat.</b></span>
+    </div>
+  </div>
+  <div class="board-wrap">
+    <div class="board-top"><span>THE NEXT MOVE IS YOURS</span><span>↗</span></div>
+    <div class="board-holder">
+      <div class="board" role="img" aria-label="Papan catur: kuda di e4 dengan pilihan langkah berikutnya ditandai emas">
+        {squares.map((s) => (
+          <div class={`sq ${s.dark ? 'dark' : 'light'}${s.path ? ' path' : ''}${s.target ? ' target' : ''}${s.kind ? ' occupied' : ''}`} aria-hidden="true">
+            {s.coord && <span class="coord">{s.coord}</span>}
+            {s.kind === 'knight' && <span class="knight">♞</span>}
+            {s.kind === 'pawn' && <span class="pawn">♟&#xFE0E;</span>}
+          </div>
+        ))}
+      </div>
+      <div class="float-tag"><span>✦</span>Strategi. Sportivitas. Solidaritas.</div>
+    </div>
+    <div class="board-bottom"><span>ST BHINNEKA CHESS CLUB</span><span>MEDAN, INDONESIA</span></div>
+  </div>
+</section>
+<div class="values">
+  <span>♜ <b>Asah strategi</b></span>
+  <span>♞ <b>Temukan komunitas</b></span>
+  <span>♛ <b>Tumbuhkan prestasi</b></span>
+  <a href="#kegiatan">Lihat kegiatan klub <span>↗</span></a>
+</div>

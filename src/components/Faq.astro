@@ -1,0 +1,20 @@
+---
+import { faq } from '../data/site';
+---
+<section id="belajar" class="section tinted">
+  <div class="head">
+    <div>
+      <div class="eyebrow">06 / POJOK CATUR</div>
+      <h2>Mulai dari rasa ingin tahu.</h2>
+    </div>
+    <p>Bekal sederhana sebelum duduk di depan papan.</p>
+  </div>
+  <div class="faq">
+    {faq.map((f) => (
+      <details>
+        <summary>{f.q}<b>+</b></summary>
+        <p>{f.a}</p>
+      </details>
+    ))}
+  </div>
+</section>

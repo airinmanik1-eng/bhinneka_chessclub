@@ -1,0 +1,66 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.vue';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import Activities from '../components/Activities.vue';
+import Achievements from '../components/Achievements.astro';
+import Organization from '../components/Organization.vue';
+import Members from '../components/Members.vue';
+import Faq from '../components/Faq.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+---
+<Layout
+  title="ST Bhinneka Chess Club — Setiap Langkah, Sebuah Peluang."
+  description="ST Bhinneka Chess Club — Unit Prestasi Mahasiswa Universitas Satya Terra Bhinneka. Profil, kegiatan, prestasi, kepengurusan, dan informasi bergabung."
+>
+  <div class="topline">
+    <span>UNIT PRESTASI MAHASISWA</span>
+    <span>UNIVERSITAS SATYA TERRA BHINNEKA <b>↗</b></span>
+  </div>
+  <Header client:load />
+  <main>
+    <Hero />
+    <About />
+
+    <section id="kegiatan" class="section tinted">
+      <div class="head">
+        <div>
+          <div class="eyebrow">02 / AGENDA &amp; LATIHAN</div>
+          <h2>Langkah kecil.<br /><em>Progres yang berarti.</em></h2>
+        </div>
+        <p>Kenali bentuk kegiatan klub, lalu temukan<br />ruang belajar yang sesuai untukmu.</p>
+      </div>
+      <Activities client:visible />
+    </section>
+
+    <Achievements />
+
+    <section id="organisasi" class="section organization">
+      <div class="head">
+        <div>
+          <div class="eyebrow">04 / ORANG DI BALIK LANGKAH</div>
+          <h2>Semangat yang sama.<br /><em>Estafet yang terus berjalan.</em></h2>
+        </div>
+        <p>Kenali pembina dan perjalanan kepengurusan<br />ST Bhinneka Chess Club.</p>
+      </div>
+      <Organization client:visible />
+    </section>
+
+    <section id="anggota" class="section members">
+      <div>
+        <div class="eyebrow">05 / KOMUNITAS KITA</div>
+        <h2>Beragam langkah.<br /><em>Satu semangat.</em></h2>
+        <p>Direktori anggota aktif menjadi tempat untuk mengenal rekan satu komunitas dan perjalanan mereka di dunia catur.</p>
+      </div>
+      <Members client:visible />
+    </section>
+
+    <Faq />
+
+    
+    <Contact />
+  </main>
+  <Footer />
+</Layout>
