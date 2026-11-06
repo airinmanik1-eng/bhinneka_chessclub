@@ -1,5 +1,12 @@
-Letakkan foto dokumentasi di folder kegiatan yang sesuai (format: jpg, jpeg, png, webp).
-Foto otomatis tampil di bagian "Dokumentasi Lomba" pada halaman Kegiatan, diurutkan menurut nama berkas
-(mis. 01.jpg, 02.jpg, 03.jpg). Slot kosong berisi "Foto dokumentasi" akan terisi sendiri.
-Setelah menambah foto, jalankan ulang `npm run dev` bila foto belum muncul.
+Letakkan foto dokumentasi di folder kategori yang sesuai, langsung di dalam src/assets/
+(format: jpg, jpeg, png, webp, gif, avif). Nama folder harus sama persis dengan `slug`
+di src/data/site.ts (huruf besar/kecil dan spasi ikut dihitung).
+
+Contoh:
+  src/assets/gebyar-prestasi-2024/01.jpg      -> tampil di Dokumentasi Lomba & tab Kompetisi
+  src/assets/Kegiatan Sparing Tahun 2026/01.jpg -> tampil di tab Latihan
+
+Semua foto di dalam folder otomatis tampil di website, diurutkan menurut nama berkas
+(mis. 01.jpg, 02.jpg, 03.jpg). Slot kosong bertanda "Foto dokumentasi" akan terisi sendiri
+begitu foto ditambahkan. Setelah menambah foto, jalankan ulang `npm run dev` bila foto belum muncul.
 Disarankan perkecil foto (lebar sekitar 1600px) agar website tetap ringan.

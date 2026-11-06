@@ -35,7 +35,7 @@ export const activities = [
     detail: 'Sesi diskusi pembukaan, taktik, strategi akhir permainan, dan bedah partai. ISI hal lain yang memang dilakukan, misalnya pertandingan persahabatan.',
   },
 ];
-// Dokumentasi lomba. `slug` = nama folder foto di src/assets/dokumentasi/<slug>/
+// Dokumentasi lomba. `slug` = nama folder foto di src/assets/<slug>/
 // Isi `year` jika tahunnya sudah pasti (kosongkan jika belum).
 export const lomba = [
   { slug: 'gebyar-prestasi-2024', title: 'Gebyar Prestasi 2024', year: '2024' },
@@ -46,11 +46,12 @@ export const lomba = [
   { slug: 'chess-tournament-medan-2025', title: 'Chess Tournament Medan', year: '2025' },
 ];
 
-// Dokumentasi sparing/latihan. `slug` = nama folder foto di src/assets/dokumentasi/<slug>/
+// Dokumentasi sparing/latihan. `slug` = nama folder foto di src/assets/<slug>/
+// `slug` harus sama persis dengan nama foldernya (huruf besar/kecil dan spasi ikut dihitung).
 export const sparing = [
-  { slug: 'sparing-2026', title: 'Kegiatan Sparing Tahun 2026' },
-  { slug: 'sparing-2025', title: 'Kegiatan Sparing Tahun 2025' },
-  { slug: 'sparing-2024', title: 'Kegiatan Sparing Tahun 2024' },
+  { slug: 'Kegiatan Sparing Tahun 2026', title: 'Kegiatan Sparing Tahun 2026' },
+  { slug: 'Kegiatan Sparing Tahun 2025', title: 'Kegiatan Sparing Tahun 2025' },
+  { slug: 'Kegiatan Sparing Tahun 2024', title: 'Kegiatan Sparing Tahun 2024' },
 ];
 
 export const filters: { key: 'all' | Kind; label: string }[] = [

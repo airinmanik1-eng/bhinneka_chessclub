@@ -384,14 +384,19 @@ dialog .btn { margin-top: 22px; }
 }
 
 /* --------------------------------------------------------------------------
-   Foto dokumentasi (tombol Latihan / Kompetisi / Komunitas di Activities.vue)
+   Dokumentasi lomba (Lomba.vue) — mobile-first: 1 kolom di HP, 2 kegiatan per baris di tablet/laptop
    -------------------------------------------------------------------------- */
-.tabs + .cards { margin-top: 24px; }
-.sparing-docs { margin-top: 36px; }
-.sparing-docs .kicker { display: block; }
-.doc-group { margin-top: 24px; }
-.doc-group h3 { margin-bottom: 14px; font-size: 20px; }
-.doc-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.lomba-wrap { margin-top: 56px; padding-top: 40px; border-top: 1px solid var(--sand); }
+.lomba-wrap .intro { margin-bottom: 28px; }
+.lomba-wrap .intro h2 { font-size: clamp(22px, 1.6vw + 16px, 32px); }
+.lomba-wrap .intro p { margin-top: 12px; max-width: 520px; }
+.lomba-list { display: grid; grid-template-columns: 1fr; gap: 32px 24px; }
+.gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+.lomba { display: flex; flex-direction: column; min-width: 0; padding-top: 18px; border-top: 1px solid var(--sand); }
+.lomba-head { display: flex; align-items: flex-start; gap: 14px; flex: 1; margin-bottom: 16px; }
+.lomba-head > div { flex: 1; min-width: 0; }
+.lomba-head h3 { margin-top: 4px; }
+.lomba-no { flex-shrink: 0; font: 800 28px/1.1 Manrope, Arial, sans-serif; letter-spacing: -.04em; color: var(--gold-deep); }
 .shot { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; width: 100%; aspect-ratio: 16 / 10; margin: 0; padding: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 4px; background: var(--stone); }
 .shot img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .3s; }
 button.shot:hover img { transform: scale(1.03); }
@@ -400,24 +405,33 @@ button.shot:hover img { transform: scale(1.03); }
 .shot.empty > * { position: relative; }
 .shot.empty span { font: 300 34px/1 Manrope, Arial, sans-serif; color: var(--bronze); }
 .shot.empty small { font-size: 12px; }
+.dev-hint { margin-top: 10px; }
+.dev-hint code { padding: 1px 5px; border-radius: 3px; background: var(--stone); word-break: break-all; }
+
+dialog.lightbox { width: min(94vw, 980px); padding: 0; overflow: hidden; border-color: var(--navy); background: var(--navy-deep); }
+.lightbox img { display: block; width: 100%; max-height: 78vh; max-height: 78dvh; object-fit: contain; }
+.lightbox .close { top: 8px; right: 8px; z-index: 1; border-radius: 50%; background: var(--cream); }
+.lb-bar { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 10px 12px; color: var(--cream); font-size: 13px; text-align: center; }
+.lb-bar button { flex-shrink: 0; min-width: 44px; min-height: 44px; border: 1px solid var(--slate); border-radius: 3px; background: none; color: var(--cream); font-size: 18px; }
+.lb-bar button:hover { background: var(--navy-hover); }
+
+/* Grid foto dokumentasi per kegiatan (Activities.vue) */
+.doc-group { margin-top: 24px; }
+.doc-group h3 { margin-bottom: 14px; font-size: 20px; }
+.doc-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
 
 /* Baris jadwal di pop-up kegiatan */
 .dialog-info { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--line); }
 .dialog-info span { font-size: 11px; font-weight: 700; letter-spacing: .14em; color: var(--bronze); }
 .dialog-info b { font-size: 14px; font-weight: 600; }
 
-/* Pop-up foto yang diperbesar */
-dialog.lightbox { width: min(94vw, 980px); padding: 0; overflow: hidden; border-color: var(--navy); background: var(--navy-deep); }
-.lightbox img { display: block; width: 100%; max-height: 78vh; max-height: 78dvh; object-fit: contain; }
-.lightbox .close { top: 8px; right: 8px; z-index: 1; border-radius: 50%; background: var(--cream); }
-.lb-bar { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 8px 12px; color: var(--cream); font-size: 13px; text-align: center; }
-.lb-bar button { flex-shrink: 0; min-width: 44px; min-height: 44px; border: 1px solid var(--slate); border-radius: 3px; background: none; color: var(--cream); font-size: 18px; }
-.lb-bar button:hover { background: var(--navy-hover); }
-
 @media (min-width: 761px) {
+  .lomba-wrap { margin-top: 72px; padding-top: 52px; }
+  .lomba-list { grid-template-columns: repeat(2, 1fr); gap: 44px 32px; }
+  .lomba-no { font-size: 36px; }
+  .gallery { grid-template-columns: repeat(3, 1fr); gap: 12px; }
   .doc-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; }
 }
-
 /* Tombol kembali ke atas (melayang di pojok kanan bawah) */
 .to-top { position: fixed; right: max(16px, env(safe-area-inset-right)); bottom: max(16px, env(safe-area-inset-bottom)); z-index: 40; display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; border: 2px solid var(--cream); border-radius: 50%; background: var(--navy); color: var(--cream); box-shadow: 0 6px 18px rgba(13, 32, 57, .25); opacity: 0; visibility: hidden; transform: translateY(8px); transition: opacity .25s, transform .25s, visibility .25s, background .2s, color .2s; }
 .to-top.show { opacity: 1; visibility: visible; transform: none; }
@@ -430,3 +444,8 @@ dialog.lightbox { width: min(94vw, 980px); padding: 0; overflow: hidden; border-
 /* Tautan Instagram di bagian Kontak */
 .ig-link { gap: 10px; }
 .ig-link svg { display: block; flex-shrink: 0; }
+
+/* Dokumentasi sparing di bawah kartu Latihan */
+.sparing-docs { margin-top: 36px; }
+.sparing-docs .kicker { display: block; margin-bottom: 14px; }
+

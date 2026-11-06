@@ -4,6 +4,7 @@ import Header from '../components/Header.vue';
 import Hero from '../components/Hero.astro';
 import About from '../components/About.astro';
 import Activities from '../components/Activities.vue';
+import Lomba from '../components/Lomba.vue';
 import Achievements from '../components/Achievements.astro';
 import Organization from '../components/Organization.vue';
 import Members from '../components/Members.vue';
@@ -33,6 +34,7 @@ import Footer from '../components/Footer.astro';
         <p>Kenali bentuk kegiatan klub, lalu temukan<br />ruang belajar yang sesuai untukmu.</p>
       </div>
       <Activities client:visible />
+      <Lomba client:visible />
     </section>
 
     <Achievements />

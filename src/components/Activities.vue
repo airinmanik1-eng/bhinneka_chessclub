@@ -20,14 +20,19 @@ function onBackdrop(e: MouseEvent) {
   if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) d.close();
 }
 
-// Foto dokumentasi per kategori, diambil dari src/assets/dokumentasi/<folder>/
-//   Latihan   -> folder sparing-2024, sparing-2025, sparing-2026
+// Foto dokumentasi per kategori, diambil dari src/assets/<folder>/
+//   Latihan   -> folder sparing (lihat daftar `sparing` di site.ts)
 //   Kompetisi -> folder lomba (lihat daftar `lomba` di site.ts)
 //   Komunitas -> folder komunitas
-const files = import.meta.glob(
-  '/src/assets/dokumentasi/*/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}',
-  { eager: true, query: '?url', import: 'default' },
-) as Record<string, string>;
+const allFiles = import.meta.glob('/src/assets/**/*.*', {
+  eager: true,
+  query: '?url',
+  import: 'default',
+}) as Record<string, string>;
+// Hanya berkas gambar; folder di dalam folder kegiatan (mis. hasil unduhan) tetap terbaca.
+const files = Object.fromEntries(Object.entries(allFiles).filter(([path]) => /\.(jpe?g|png|webp|gif|avif)$/i.test(path)));
+// Nama folder kategori = segmen kedua terakhir dari path (mis. /src/assets/<folder>/foto.jpg).
+const folderOf = (path: string) => path.split('/').slice(-2, -1)[0] ?? '';
 const folders: Record<Kind, { slug: string; title: string }[]> = {
   latihan: sparing,
   kompetisi: lomba,
@@ -38,7 +43,6 @@ const docLabel: Record<Kind, string> = {
   kompetisi: 'DOKUMENTASI LOMBA',
   komunitas: 'DOKUMENTASI KOMUNITAS',
 };
-
 type Photo = { src: string; slug: string; name: string; caption: string };
 // Foto dikelompokkan per folder (per tahun / per lomba), tiap kelompok punya judul sendiri.
 const groups = computed(() => {
@@ -46,7 +50,7 @@ const groups = computed(() => {
   return folders[active.value].map((f) => ({
     ...f,
     photos: Object.entries(files)
-      .filter(([path]) => path.split('/').slice(-2, -1)[0] === f.slug)
+      .filter(([path]) => folderOf(path) === f.slug)
       .map(([path, src]) => ({ src, slug: f.slug, name: path.split('/').pop() as string, caption: f.title }))
       .sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true })) as Photo[],
   }));
